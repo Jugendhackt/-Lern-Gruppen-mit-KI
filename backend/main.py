@@ -7,13 +7,17 @@ antworten = []
 
 nameLocal = ""
 def write_Json(antwortenLocal, name):
+    index =0
     print("Write Json...")
     print(antwortenLocal)
     jsonFile = open("data.csv", "a")
     jsonFile.write(str(name) + ",")
     for i in antwortenLocal:
-        jsonFile.write(str(i) + ",")
-    jsonFile.write("\n")
+        index = index +1
+        if index != len(antwortenLocal):
+            jsonFile.write(str(i) + ",")
+        else:
+            jsonFile.write(str(i) +"\n")
     jsonFile.close()
 
 
