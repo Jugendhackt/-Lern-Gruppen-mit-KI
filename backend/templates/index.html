@@ -1,24 +1,32 @@
 <!doctype html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <html>
 <head>
     <title>Home page</title>
-    </head>
+</head>
     <body>
 	<h1>{{Tittel}}</h1>
 	<h2>{{content}}</h2>
 	<form method="post">
 
-        <input type="checkbox" id="1" name="hello" value="Frage 1">
+        <input type="checkbox" id="1" name="hello" class="check" value="0">
         <label for="1">{{möglichkeiten[0]}}</label><br>
-        <input type="checkbox" id="2" name="hello" value="Frage 2">
+        <input type="checkbox" id="2" name="hello" class="check" value="1">
 
         <label for="2">{{möglichkeiten[1]}}</label><br>
 
-        <input type="checkbox" id="3" name="hello" value="Frage 3">
+        <input type="checkbox" id="3" name="hello" class="check" value="2">
         <label for="3">{{möglichkeiten[2]}}</label><br>
         {{ test | safe }}
-        <input type="submit" name="Bestätigen" value="Bestätigen"><br>
+        <br><input type="submit" name="Bestätigen" class="check" value="Bestätigen"><br>
 
     </form>
+    <script>
+        $(document).ready(function(){
+            $('input:checkbox').click(function() {
+                $('input:checkbox').not(this).prop('checked', false);
+            });
+        });
+</script>
     </body>
 </html>
