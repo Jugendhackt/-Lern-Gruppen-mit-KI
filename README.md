@@ -7,3 +7,6 @@ Der Score wie gut zwei Leute zusammen passen, wird durch das vergleichen von den
 Das Programm besteht aus zwei Teilbereichen: 
 1. Die App zum Ausfüllen des Fragebogens und der Anzeige der Ergebnisse
 2. Das Neuronale Netz zur Ermittlung des Scores
+
+### Link zum Fragebogen
+https://pad.medialepfade.net/dkt6NejfThy2Tel9laRtJA# 
