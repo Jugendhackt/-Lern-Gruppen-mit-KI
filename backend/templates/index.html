@@ -8,6 +8,7 @@
 	<h1>{{Tittel}}</h1>
 	<h2>{{content}}</h2>
 	<form method="post">
+        {{ test2 | safe }}
 
         <input type="checkbox" id="1" name="hello" class="check" value="0">
         <label for="1">{{möglichkeiten[0]}}</label><br>
@@ -21,6 +22,7 @@
         <br><input type="submit" name="Bestätigen" class="check" value="Bestätigen"><br>
 
     </form>
+
     <script>
         $(document).ready(function(){
             $('input:checkbox').click(function() {
