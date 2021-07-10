@@ -1,0 +1,17 @@
+<!doctype html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<html>
+<head>
+    <title>Result</title>
+</head>
+    <body>
+	    <h1>Resultat</h1>
+        <ul>
+            {% for name, match in result %}
+                <li> 
+                    {{name}}, match: {{match}}
+                </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

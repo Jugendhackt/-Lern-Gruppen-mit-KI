@@ -99,11 +99,11 @@ def init():
     training_set_outputs = np.array([[0.4, 0.7, 0.9, 0.9, 0.3, 0.3]]).T
 
     # Trainiere das neuronale Netzwerk
-    neural_network.train(training_set_inputs, training_set_outputs, 60000)
+    neural_network.train(training_set_inputs, training_set_outputs, 6000)
 
 def check_match(person_one_choices, person_two_choices):
     global neural_network
-    return neural_network.think(np.concatenate([person_one_choices, person_two_choices]))[1]
+    return neural_network.think(np.concatenate([person_one_choices, person_two_choices]))[1][0]
 
 
 init()
