@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+    <title>Home page</title>
+    </head>
+    <body>
+	<h1>{{Tittel}}</h1>
+	<h2>{{content}}</h2>
+	<form method="post">
+
+        <input type="checkbox" id="1" name="hello" value="Frage 1">
+        <label for="1">{{möglichkeiten[0]}}</label><br>
+        <input type="checkbox" id="2" name="hello" value="Frage 2">
+
+        <label for="2">{{möglichkeiten[1]}}</label><br>
+
+        <input type="checkbox" id="3" name="hello" value="Frage 3">
+        <label for="3">{{möglichkeiten[2]}}</label><br>
+        {{ test | safe }}
+        <input type="submit" name="Bestätigen" value="Bestätigen"><br>
+
+    </form>
+    </body>
+</html>
