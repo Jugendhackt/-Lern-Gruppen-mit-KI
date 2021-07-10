@@ -1,4 +1,4 @@
-# -Lern-Gruppen-mit-KI
+# Lern-Gruppen mit KI
 
 Das Programm ist dazu gedacht verschiedene Personen mit gleichen Interessen, Fähigkeiten oder Wissenständen in eine Lerngruppe zusammenzubringen. 
 Als Technologie zum finden der Personen verwenden wir Künstliche Intelligenz (wahrscheinlich Neuronale Netze). 
