@@ -51,11 +51,9 @@ class NeuralNetwork():
     # The neural network thinks.
     def think(self, inputs):
         output_from_layer1 = self.__sigmoid(
-np.dot
-(inputs, self.layer1.synaptic_weights))
+            np.dot(inputs, self.layer1.synaptic_weights))
         output_from_layer2 = self.__sigmoid(
-np.dot
-(output_from_layer1, self.layer2.synaptic_weights))
+            np.dot(output_from_layer1, self.layer2.synaptic_weights))
         return output_from_layer1, output_from_layer2
 
     # The neural network prints its weights
@@ -75,10 +73,13 @@ def init():
 
     # Beschreibt, was die i-te Person jeweils gewaehlt hat
     person_choices = np.array([
-        [1, 4, 2, 3, 1, 0, 3],
-        [6, 1, 3, 1, 3, 1, 2],
-        [2, 5, 1, 3, 2, 1, 8],
-        [2, 2, 5, 1, 6, 1, 2]
+        [1, 0, 1, 0, 0, 2, 3],
+        [0, 0, 3, 2, 0, 0, 0],
+        [0, 1, 1, 2, 3, 2, 1],
+        [3, 2, 1, 0, 2, 2, 1],
+        [0, 1, 2, 1, 1, 3, 0],
+        [2, 2, 0, 2, 0, 0, 3],
+        [0, 1, 2, 0, 2, 1, 1]
     ])
     assert person_choices.shape[1] == num_questions
 
@@ -89,14 +90,19 @@ def init():
 
     # Beschreibe die Input-Daten
     training_set_inputs = np.array([
-        np.concatenate([person_choices[0], person_choices[2]]),
-        np.concatenate([person_choices[1], person_choices[3]]),
-        np.concatenate([person_choices[0], person_choices[3]]),
-        np.concatenate([person_choices[3], person_choices[0]]),
-        np.concatenate([person_choices[2], person_choices[3]]),
-        np.concatenate([person_choices[3], person_choices[2]])
+        np.concatenate([person_choices[0], person_choices[1]]),
+        np.concatenate([person_choices[1], person_choices[0]]),
+        np.concatenate([person_choices[1], person_choices[2]]),
+        np.concatenate([person_choices[2], person_choices[1]]),
+        np.concatenate([person_choices[1], person_choices[1]]),
+        np.concatenate([person_choices[1], person_choices[6]]),
+        np.concatenate([person_choices[6], person_choices[1]]),
+        np.concatenate([person_choices[3], person_choices[6]]),
+        np.concatenate([person_choices[6], person_choices[3]]),
+        np.concatenate([person_choices[0], person_choices[4]]),
+        np.concatenate([person_choices[4], person_choices[0]])
     ])
-    training_set_outputs = np.array([[0.4, 0.7, 0.9, 0.9, 0.3, 0.3]]).T
+    training_set_outputs = np.array([[0.3, 0.3, 0.7, 0.7, 0.8, 1.0, 1.0, 0.7, 0.7, 0.8, 0.8]]).T
 
     # Trainiere das neuronale Netzwerk
     neural_network.train(training_set_inputs, training_set_outputs, 6000)
@@ -109,48 +115,4 @@ def check_match(person_one_choices, person_two_choices):
 init()
 neural_network.print_weights()
 
-''' if __name__ == "__main__":
-    np.random.seed(1)
-    num_questions = 5
 
-    # Beschreibt, was die i-te Person jeweils gewaehlt hat
-    person_choices = np.array([
-        [1, 4, 2, 3, 1],
-        [6, 1, 3, 1, 3],
-        [2, 5, 1, 3, 2],
-        [2, 2, 5, 1, 6]
-    ])
-    assert person_choices.shape[1] == num_questions
-
-    # Setze neuronales Netzwerk auf
-    layer1 = NeuronLayer(12, num_questions * 2)
-    layer2 = NeuronLayer(1, 12)
-    neural_network = NeuralNetwork(layer1, layer2)
-
-    # Beschreibe die Input-Daten
-    training_set_inputs = np.array([
-        np.concatenate([person_choices[0], person_choices[2]]),
-        np.concatenate([person_choices[1], person_choices[3]]),
-        np.concatenate([person_choices[0], person_choices[3]]),
-        np.concatenate([person_choices[3], person_choices[0]]),
-        np.concatenate([person_choices[2], person_choices[3]]),
-        np.concatenate([person_choices[3], person_choices[2]])
-    ])
-    training_set_outputs = np.array([[0.4, 0.7, 0.9, 0.9, 0.3, 0.3]]).T
-
-    # Trainiere das neuronale Netzwerk
-    neural_network.train(training_set_inputs, training_set_outputs, 60000)
-
-    # Validiere die Eingabedaten
-    print('Validierung')
-    print(neural_network.think(np.concatenate([person_choices[0], person_choices[2]]))[1])
-    print(neural_network.think(np.concatenate([person_choices[1], person_choices[3]]))[1])
-    print(neural_network.think(np.concatenate([person_choices[0], person_choices[3]]))[1])
-    print(neural_network.think(np.concatenate([person_choices[2], person_choices[3]]))[1])
-
-    # Mache weitere Messungen
-    print('\nWeitere Messungen')
-    print(neural_network.think(np.concatenate([person_choices[1], person_choices[2]]))[1])
-    print(neural_network.think(np.concatenate([person_choices[3], person_choices[0]]))[1])
-    print(neural_network.think(np.concatenate([person_choices[3], person_choices[2]]))[1])
-    '''
